@@ -91,6 +91,9 @@ $(document).ready(function(){
 
         $('#score').html('Your score: ' +score);
 
+        if(score%5==0)
+            speed-=10;
+
     }
 
     function paintCell(x,y){
