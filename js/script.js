@@ -36,3 +36,9 @@ function createSnake(){
 
 }
 
+function createFood(){
+    food = {
+        x:Math.round(Math.random()*(w-cw)/cw);
+        y:Math.round(Math.random()*(h-cw)/cw);
+    }
+}
