@@ -8,19 +8,31 @@ $(document).ready(function(){
         food,
         score,
         speed = 130,
-        snake_array;
+        snakeArray;
 
         init();
 
 });
 
+//Initialize Snake,food and game
 function init(){
-    create_snake();
-    create_food();
+    createSnake();
+    createFood();
     score = 0;
-    if(typeof game_loop!='undefined')
-        clearInterval(game_loop);
-    game_loop=setInterval(paint,speed);
+    if(typeof gameLoop!='undefined')
+        clearInterval(gameLoop);
+    gameLoop=setInterval(paint,speed);
         
 
 }
+
+//Create Snake
+function createSnake(){
+    var length = 5;
+    snakeArray = {};
+    for(var i=length-1;i >=0; i--){
+        snakeArray.push({x:i,y:0})
+    }
+
+}
+
