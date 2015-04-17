@@ -14,6 +14,7 @@ $(document).ready(function(){
         init();
     //Initialize Snake,food and game
     function init(){
+        d='right';
         createSnake();
         createFood();
         score = 0;
@@ -57,9 +58,10 @@ $(document).ready(function(){
         else if(d=='up') ny--;
         else if(d=='down')ny++;
 
-        if( (nx==-1) || (nx == w/cw) || (ny == -1) || (ny == h/cw) || checkCollision(nx,ny,snakeArray)){
-            init();
-
+        if( nx==-1 || nx == w/cw || ny == -1 || ny == h/cw || checkCollision(nx,ny,snakeArray)){
+            //init();
+            $('#final_score').html(score);
+            $('#overlay').fadeIn(300);
             return;
         }
 
@@ -85,6 +87,8 @@ $(document).ready(function(){
 
         checkScore(score);
 
+        $('#score').html('Your score: ' +score);
+
     }
 
     function paintCell(x,y){
@@ -102,4 +106,35 @@ $(document).ready(function(){
         return false;
 
     }
+
+    function checkScore(score){
+        if(localStorage.getItem('highscore')===null){
+            localStorage.setItem('highscore',score);
+        }
+        else{
+            if(score > localStorage.getItem('highscore'))
+                localStorage.setItem('highscore',score);
+        }
+
+        $('#high_score').html("High score: " +localStorage.getItem('highscore'));
+    }
+    $(document).keydown(function(e){
+        var key = e.which;
+        if(key=="37" && d!='right')
+            d='left';
+        else if(key=="38" && d!='down')
+            d='up';
+        else if(key=="39" && d!='left')
+            d='right';
+        else if(key=="40" && d!='up')
+            d='down';
+
+    });
+
+
 });
+
+function resetScore(){
+    localStorage.highscore = 0;
+    $('high_score').html("High score: "+localStorage.highscore);
+}

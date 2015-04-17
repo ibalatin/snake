@@ -30,7 +30,7 @@ canvas{
     overflow:auto;
 }
 
-.score{
+#score, #high_score{
     width:25%;
     height:50px;
     padding-top:20px;
