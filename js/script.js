@@ -10,8 +10,9 @@ $(document).ready(function(){
         color = 'green',
         speed = 130,
         snakeArray;
+        init(),
+        dead=false;
 
-        init();
     //Initialize Snake,food and game
     function init(){
         d='right';
@@ -62,6 +63,7 @@ $(document).ready(function(){
             //init();
             $('#final_score').html(score);
             $('#overlay').fadeIn(300);
+            dead = true;
             return;
         }
 
@@ -120,17 +122,16 @@ $(document).ready(function(){
     }
     $(document).keydown(function(e){
         var key = e.which;
-        if(key=="37" && d!='right')
+        if(key=="37" && d!='right' && dead!=true)
             d='left';
-        else if(key=="38" && d!='down')
+        else if(key=="38" && d!='down'&& dead!=true)
             d='up';
-        else if(key=="39" && d!='left')
+        else if(key=="39" && d!='left'&& dead!=true)
             d='right';
-        else if(key=="40" && d!='up')
+        else if(key=="40" && d!='up'&& dead!=true)
             d='down';
 
     });
-
 
 });
 
