@@ -1,5 +1,5 @@
 # snake
-Learning html5 and js(jquery) by building snake game. 
+Learning html5 and js(jquery) by building a snake game. 
 
 After losing the game, user could press any arrow key and continue playing(fixed)
 
